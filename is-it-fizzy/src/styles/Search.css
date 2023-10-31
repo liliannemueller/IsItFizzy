@@ -1,0 +1,27 @@
+.searchContainer{
+    max-width: 200px;
+    padding-top: 20px;
+}
+
+.pac-container {
+    z-index: 10000 !important;
+    width: auto !important;
+    position: initial !important;
+    left: 0 !important;
+    right: 0 !important;
+    display: block !important;
+}
+.pac-container:empty{
+    display: none !important;
+}
+
+
+
+.pac-item { font-size:1em}
+.pac-matched { font-size:1.2em}
+.pac-target-input { font-size:1em}
+.pac-item:hover { font-weight:bold}
+.pac-container {
+     animation: rotateMenu 400ms ease-in-out forwards;
+  transform-origin: top center;
+}
