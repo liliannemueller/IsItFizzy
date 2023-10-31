@@ -16,13 +16,12 @@ const [searchResult, setSearchResult] = useState({
         selectProps={{
           placeholder: 'What bar are you at?',  
           searchResult,
-          
           onChange: (selectedResult) =>{
             if (selectedResult && selectedResult.value){
                 setSearchResult({
                  name: selectedResult.value.description,
 
-                 id: selectedResult.value.place_id,// / Use 'value' for the place ID
+                 id: selectedResult.value.place_id,
                 });
                  console.log("Selected Place Data:", searchResult);
             } else {
