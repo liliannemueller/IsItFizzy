@@ -1,13 +1,19 @@
 import React from 'react';
 import bootstrap from 'bootstrap';
+import '../styles/Meter.css'
 
 
 export default function FizzyMeter(){
     return(
         <div>
-            <label for="fizzyMeter" class="form-label">How fizzy is it?</label>
-            <br></br>
-            <input type="range" class="form-range" min="0" max="4" step="1" id="fizzyMeter" /> 
+        <div>
+            <label for="fizzyMeter" className="form-label">How fizzy is it?</label>
+        </div>
+        <div className= "meter-container">
+            <h4>flat</h4>
+            <input type="range" className="form-range" min="0" max="4" step="1" id="fizzyMeter" /> 
+            <h4>fizzy</h4>
+        </div>
         </div>
     )
 }

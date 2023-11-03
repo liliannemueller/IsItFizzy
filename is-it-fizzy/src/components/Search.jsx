@@ -3,49 +3,50 @@ import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 import '../styles/Search.css';
 
 
+
 export default function Search(){
 const [searchResult, setSearchResult] = useState({
     name : "",
     id: ""
 })
 
+async function handleBarSelection(selectedResult){
+    if(selectedResult && selectedResult.value){
+        const { description, place_id } = selectedResult.value;
+        console.log(searchResult);
+        try {
+            const response = await fetch('/bars/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({name: description, id: place_id})
+            });
 
+            if(response.ok){
+                console.log("Added successfully!")
+            } else {
+                console.error('Error is sending data to the server')
+            }
+        } catch (error) {
+            console.error('Error in sending data:', error)
+        }
+        setSearchResult({
+            name: description,
+            id: place_id
+        })
+    }
+}
+    
   return (
     <div>
       <GooglePlacesAutocomplete
         selectProps={{
           placeholder: 'What bar are you at?',  
           searchResult,
-          onChange: (selectedResult) =>{
-            if (selectedResult && selectedResult.value){
-                setSearchResult({
-                 name: selectedResult.value.description,
-
-                 id: selectedResult.value.place_id,
-                });
-                 console.log("Selected Place Data:", searchResult);
-            } else {
-                setSearchResult({
-                    name: "",
-                    id: "",
-                    });
-            }
-          },
-          feilds: ["description", "place_id"],
-          styles: {
-            input: (provided) => ({
-                ...provided,
-                color: 'black',
-            }),
-            option: (provided) => ({
-                ...provided,
-                color: 'pink',
-            }),
-            singleValue: (provided) => ({
-                ...provided,
-                color: 'pink',
-            }),
-        },
+          onChange: handleBarSelection,
+          fields: ["description", "place_id"],
+          
         }}
       />
     </div>

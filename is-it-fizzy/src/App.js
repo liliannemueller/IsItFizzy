@@ -4,7 +4,6 @@ import Search from './components/Search';
 import FizzyMeter from './components/FizzyMeter.jsx';
 
 function App() {
-
   return (
     <div className="App">
       <header className="App-header">

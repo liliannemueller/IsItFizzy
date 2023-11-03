@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const barSchema = new mongoose.Schema({
+const barSchema = new Schema({
     name: {
         type: String,
         required: true
@@ -10,15 +11,16 @@ const barSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
+    ratings:{
+        type: [Number],
+        required: true
+    },
     date: {
         type: Date,
         default: Date.now
     },
-    fizz:{
-        type: Number,
-        required: true
-    }
 })
 
 const Bar = mongoose.model('Bar', barSchema);
+
 module.exports = Bar;
