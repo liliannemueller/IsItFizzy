@@ -16,7 +16,7 @@ app.use(express.json());
 // MongoDB 
 const uriPW = process.env.REACT_APP_DB_PW;
 const username = process.env.REACT_APP_DB_USERNAME;
-const dbURI = `mongodb+srv://${username}:${uriPW}@fizzy.ol6cspb.mongodb.net/?retryWrites=true&w=majority`;
+const dbURI = `mongodb+srv://${username}:${uriPW}@fizzy.ol6cspb.mongodb.net/bars?retryWrites=true&w=majority`;
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection;

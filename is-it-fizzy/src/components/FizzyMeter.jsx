@@ -7,7 +7,7 @@ export default function FizzyMeter(){
     return(
         <div>
         <div>
-            <label for="fizzyMeter" className="form-label">How fizzy is it?</label>
+            <label htmlFor="fizzyMeter" className="form-label">How fizzy is it?</label>
         </div>
         <div className= "meter-container">
             <h4>flat</h4>
