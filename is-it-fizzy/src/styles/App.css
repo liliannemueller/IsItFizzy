@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  background-color: #ED462F;
 }
 
 .cocktail-img {
@@ -12,12 +11,12 @@
   .cocktail-img {
     /* animation: App-logo-spin infinite 20s linear; */
     border-radius: 400px;
+    padding: 1rem;
   }
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #f6915e;
   display: flex;
   flex-direction: column;
   align-items: center;

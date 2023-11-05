@@ -7,7 +7,7 @@ import React from "react";
 export default function Bar(){
     return(
         <div>
-        <Bar />
+        <h4>THIS IS THE BAR</h4>
         </div>
     )
 }
