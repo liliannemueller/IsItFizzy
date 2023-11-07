@@ -15,11 +15,13 @@ router.route('/').get((req, res) => {
 
 //if bar already in DB, push new rating to rating array
 router.route('/add').post((req, res) => {
+    console.log(req.body)
     const name = req.body.name;
-    const placeId = req.body.placeId;
-    const ratings = req.body.ratings;
+    const placeId = req.body.place_id;
+    const ratings = req.body.fizzyRating;
 
 //check if the bar already exists in the database
+    
     Bar.findOne({placeId})
         .then(existingBar => {
             if(existingBar) {
@@ -38,7 +40,6 @@ router.route('/add').post((req, res) => {
                     .catch(err => res.status(400).json('Error: ' + err));
             }      
         })
-  
     });    
 
 router.route('/:placeId').get((req, res) =>{
