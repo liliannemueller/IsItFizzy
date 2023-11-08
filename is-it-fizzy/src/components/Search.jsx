@@ -2,12 +2,12 @@ import React, { useState, useRef, useEffect } from "react";
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 import '../styles/Search.css';
 import FizzyMeter from "./FizzyMeter.jsx";
+import Bar from "./Bar.jsx";
 import BackButton from "./BackButton.jsx";
 
-//need to fix teh empty strings in bar/searchResult on first click.
-//need to display the fizzy meter when a bar is selected, then send teh data to the DB
 
 export default function Search(){
+    const [ratings, setRatings] = useState(null);
     const [fizzyValue, setFizzyValue] = useState(0);
     const [barDetails, setBarDetails] = useState({
         name: "",
@@ -45,12 +45,26 @@ export default function Search(){
                 id: place_id
             });
             console.log("in handleBarSelection",searchResult);
+            //check if the bar is in the database
+            //if it is, get the ratings
+            fetch(`/bars/${place_id}`)
+                .then(response => response.json())
+                .then(data => {
+                    setRatings(data.ratings);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+                console.log("RATINGS",ratings);
         }
+        
     }
 
     function handleFizzyMeterChange(event){
         setFizzyValue(event.target.value);
     };
+
+    
 
     function handleSumbit(event){
         event.preventDefault();
@@ -61,7 +75,6 @@ export default function Search(){
             fizzyRating: fizzyValue,
         }
 
-        console.log("Data",data)
         fetch('/bars/add', {
             method: 'POST',
             headers: {

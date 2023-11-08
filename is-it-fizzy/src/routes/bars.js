@@ -43,7 +43,9 @@ router.route('/add').post((req, res) => {
     });    
 
 router.route('/:placeId').get((req, res) =>{
-    Bar.findById(req.params.placeId)
+    console.log(req.body)
+    const placeId = req.params.placeId;
+    Bar.findOne({placeId})
         .then(bar => res.json(bar))
         .catch(err => res.status(400).json('Error: ' + err));
 })
